@@ -100,10 +100,11 @@ do_chat(void *arg)
              if ((n = read(c_socket, chatData, sizeof(chatData))) > 0 ) {
                 cut=strtok(chatData," "); //[닉네임] 문자열
                 cut1=strtok(NULL," "); // /w인지 확인 위함
-                cut2=strtok(NULL," ");
-                cut3=strtok(NULL,"\0");
-                printf("%s\n%s\n%s\n%s",cut,cut1,cut2,cut3);
+
                 if(!strcmp(cut1,"/w")){   
+
+					cut2=strtok(NULL," ");
+                	cut3=strtok(NULL,"\0");
                    for(i=0;i<MAX_CLIENT;i++){
                       if(!strcmp(list_c[i].nick,cut2)){
                          sprintf(chatData2,"%s님의 귓속말-> %s",cut,cut3);
